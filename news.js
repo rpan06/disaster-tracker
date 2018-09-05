@@ -1,4 +1,4 @@
-//$(document).ready(requestNewsData());
+$(document).ready(requestNewsData());
 
 function requestNewsData( keyWord = "world disaster"  ) {
 
