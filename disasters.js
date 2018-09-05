@@ -20,7 +20,7 @@ function getDataFromReliefWebSuccess(responseData){
         if(disasterItem.disaster){
             let disaster = {
                 title: disasterItem.disaster[0].name,
-                body: shortenBodyText(disasterItem.body),
+                body: shortenBodyText(disasterItem.body), //["body-html"]
                 location: disasterItem.primary_country.location,
                 keywords: makeKeywords(disasterItem.disaster[0].name),
                 url: disasterItem.url_alias
