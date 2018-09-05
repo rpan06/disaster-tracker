@@ -10,8 +10,9 @@
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBP8biNI7FrjpuX4ylmO2i2n6LEqR-h6Io&libraries=places"></script>
     <script src="main.js"></script>
-    <!-- <script src="map.js"></script> -->
+    <script src="map.js"></script>
     <!-- <script src="disaster.js"></script> -->
     <!-- <script src="twitter.js"></script> -->
     <!-- <script src="news.js" defer></script> -->
@@ -19,14 +20,12 @@
 
 <body>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="map col-md-8 pull-left">
-            <div class="mapouter">
-                <div id="map"></div>
-            </div>
+        <div id='map_outer' class="col-lg-10 pull-left">
+            <div id="map"></div>
         </div>
-        <div class="col-med-4 pull-right panel with-nav-tabs panel-default">
+        <div class="col-lg-2 pull-right panel with-nav-tabs panel-default">
             <div class="panel-heading">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab1default" data-toggle="tab">News</a></li>
@@ -42,25 +41,6 @@
         </div>
         </div>
 </div>
-
-<script type="text/javascript">
-    function initMap() {
-      // The location of Uluru
-      var uluru = {lat: -25.344, lng: 131.036};
-      // The map, centered at Uluru
-      var map = new google.maps.Map(
-          document.getElementById('map'), {zoom: 4, center: uluru});
-      // The marker, positioned at Uluru
-      var marker = new google.maps.Marker({position: uluru, map: map});
-    }
-</script>
-<!--Load the API from the specified URL
-* The async attribute allows the browser to render the page while the API loads
-* The key parameter will contain your own API key (which is not needed for this tutorial)
-* The callback parameter executes the initMap() function
--->
-<!-- Google Maps API Key: AIzaSyBP8biNI7FrjpuX4ylmO2i2n6LEqR-h6Io -->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBP8biNI7FrjpuX4ylmO2i2n6LEqR-h6Io&callback=initMap"></script>
 
 </body>
 
