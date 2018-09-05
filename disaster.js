@@ -1,68 +1,59 @@
 let listOfDisasters = [];
 
-let locationCoordinatesArray = []
-
 function getDataFromReliefWeb(){
     let ajaxParams = {
-          url: 'https://api.reliefweb.int/v1/reports?appname=apidoc&profile=full&limit=30',
+          url: 'https://api.reliefweb.int/v1/reports?appname=apidoc&profile=full&limit=200',
           method: 'get',
-          success: getDataFromReliefWebSuccess, //boolean, whether operation has succeeded
+          success: getDataFromReliefWebSuccess,
           dataType: 'json',
           error: function(){
-                console.log('error');
+                console.log('getDataFromReliefWeb: error');
           }
     }
     $.ajax(ajaxParams)
 }
 
-
 function getDataFromReliefWebSuccess(responseData){
-    console.log('ajax successful', responseData);
-    var responseDataDisaster = []
+    console.log('getDataFromReliefWebSuccess: got data successfully');
     for (let index = 0; index < responseData.data.length; index++) {
-        var disasterItem = responseData.data[index].fields
-        locationCoordinatesArray.push(disasterItem.primary_country.location)
+        const disasterItem = responseData.data[index].fields
         if(disasterItem.disaster){
-            responseDataDisaster.push(disasterItem)
+            let disaster = {
+                title: disasterItem.disaster[0].name,
+                body: shortenBodyText(disasterItem.body),
+                location: disasterItem.primary_country.location,
+                keywords: makeKeywords(disasterItem.disaster[0].name),
+                url: disasterItem.url_alias
+            }
+            listOfDisasters.push(disaster)
         }
-
     }
-    console.log(locationCoordinatesArray)
-    console.log(responseDataDisaster);
+    deleteDuplicateData(listOfDisasters)
+    console.log(listOfDisasters);
+}
 
 
-    //var disasterTitle = responseData.data[index].fields.disaster.location
+function deleteDuplicateData(array){
+    for (let i = 0; i < array.length-1; i++) {
+        for (let k = i+1; k < array.length; k++) {
+            if(array[i].title === array[k].title){
+                array.splice(k,1)
+                k--
+            }
+        }
+    }
+}
+
+function makeKeywords(str){
+    return str.split(" - ")[0].toLowerCase().replace(":","")
+}
+
+function shortenBodyText(str = ""){
+    //str = str.replace(/\r?\n|\r/g,' ')  //removes line breaks
+    str = str.replace(/[*]/g,'') //removes *
+    str = str.split(" ").splice(0,100).join(" ") //grabs 100 words
+    str += "..."
+    return str
 }
 
 getDataFromReliefWeb();
-
-
-//https://api.reliefweb.int/v1/reports?appname=apidoc&profile=list&limit=30&fields[include][]=disaster
-
-//https://api.reliefweb.int/v1/reports?profile=full
-//https://api.reliefweb.int/v1/reports?appname=apidoc&filter[field]=country&filter[value]=France
-//https://api.reliefweb.int/v1/reports?appname=apidoc&query[value]=earthquake
-
-
-
-
-
-// function getDataOnSpecificDisaster(){
-//     var ajaxParams = {
-//           url: 'https://api.reliefweb.int/v1/reports/2454884',
-//           method: 'get',
-//           dataType: 'json',
-//           success: function(response){
-//             getDataOnSpecificDisasterSuccess(response);
-//         }, //boolean, whether operation has succeeded
-//           error: function(){
-//                 console.log('error');
-//           }
-//     }
-//     $.ajax(ajaxParams)
-// }
-
-// function getDataOnSpecificDisasterSuccess(responseData){
-//     console.log('ajax successful 2 ', responseData);
-//     responseData2 = responseData;
-// }
