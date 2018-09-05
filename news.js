@@ -24,16 +24,7 @@ var ajaxParams = {
 function getResult(response){
     var    newsData = new Object();
     if(response.status === 'ok'){
-        for( let i  in  response.articles) {
-            newsData.source =  response.articles[i].source;
-            newsData.author =  response.articles[i].author;
-            newsData.title =  response.articles[i].title;
-            newsData.description =  response.articles[i].description;
-            newsData.url =  response.articles[i].url;
-            newsData.urlToImage =  response.articles[i].urlToImage;
-            newsData.publishedAt =  response.articles[i].publishedAt;
-            news_array.push(newsData);
-        }
+        renderNews(response);
         console.log ('news_array', news_array);
         console.log('msg success', response);
     }else{
@@ -55,4 +46,32 @@ function requsetData(  ) {
 function sendAjax(){
     requsetData();
     $.ajax(ajaxParams);
+}
+
+
+function renderNews(responseData) {
+
+    let newsData = new Object();
+
+    for( let i  in  responseData.articles) {
+        newsData.source =  responseData.articles[i].source;
+        newsData.author =  responseData.articles[i].author;
+        newsData.title =  responseData.articles[i].title;
+        newsData.description =  responseData.articles[i].description;
+        newsData.url =  responseData.articles[i].url;
+        newsData.urlToImage =  responseData.articles[i].urlToImage;
+        newsData.publishedAt =  responseData.articles[i].publishedAt;
+        newsTitle = $('<a>',{
+          text:  newsData.title,
+          title: newsData.title,
+          href:   newsData.url,
+          target: "_blank"
+        });
+        let newsDiv = $('<div>');
+        newsDiv.append(newsTitle);
+        $('#tab1default').append(newsDiv);
+        console.log(newsDiv);
+    }
+
+
 }
