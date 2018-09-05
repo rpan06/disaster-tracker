@@ -1,4 +1,4 @@
-//$(document).ready(requestNewsData());
+$(document).ready(requestNewsData());
 
 function requestNewsData( keyWord = "world disaster"  ) {
 
@@ -10,8 +10,6 @@ function requestNewsData( keyWord = "world disaster"  ) {
         method: 'get',
         success: renderNewsData,
     }
-    let date = new Date();
-    console.log('date.yyyy-mm-dd',date.yyyy-mm-dd);
     data_object.apiKey = '5f9b798c24b344edb04feb52d0e31d4f';
     data_object.q = keyWord;
     data_object.from = "2018-07-01";
@@ -26,10 +24,13 @@ function requestNewsData( keyWord = "world disaster"  ) {
 
 
 function renderNewsData(responseData){
+    $('#tab1default').empty();
     let newsData = new Object();
 
     if(responseData.status === 'ok'){
-
+        if(!responseData.articles.length){
+            $('<div>').text("No News Found On This Topic").appendTo("#tab1default")
+        }
         for( let i  in  responseData.articles) {
             newsData.source =  responseData.articles[i].source;
             newsData.author =  responseData.articles[i].author;
@@ -53,4 +54,3 @@ function renderNewsData(responseData){
         // console.log('msg fail', responseData);
     }
 }
-
