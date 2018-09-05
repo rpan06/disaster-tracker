@@ -1,0 +1,11 @@
+.mapouter
+{
+	height: 603px;
+	width: 735px;
+}
+
+#map 
+{
+	height: 100%;
+	width: 100%;
+}

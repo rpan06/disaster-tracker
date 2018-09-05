@@ -11,28 +11,22 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="main.js"></script>
-    <script src="map.js"></script>
-    <script src="disaster.js"></script>
-    <script src="twitter.js"></script>
-    <script src="news.js" defer></script>
+    <!-- <script src="map.js"></script> -->
+    <!-- <script src="disaster.js"></script> -->
+    <!-- <script src="twitter.js"></script> -->
+    <!-- <script src="news.js" defer></script> -->
 </head>
 
 <body>
 
 <div class="container">
-        <div class="map col-xs-12 col-sm-8 pull-left">
-                <div class="mapouter">
-                    <div class="gmap_canvas">
-                        <iframe width="735" height="603" id="gmap_canvas" src="https://maps.google.com/maps?q=Learning%20Fuze&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-                        </iframe>
-                        <a href="https://www.pureblack.de">
-                        </a>
-                    </div>
-                    <style>.mapouter{text-align:right;height:603px;width:735px;}.gmap_canvas {overflow:hidden;background:none!important;height:603px;width:735px;}</style>
-                </div>
+    <div class="row">
+        <div class="map col-md-8 pull-left">
+            <div class="mapouter">
+                <div id="map"></div>
+            </div>
         </div>
-
-        <div class="col-xs-12 col-sm-4 pull-right panel with-nav-tabs panel-default">
+        <div class="col-med-4 pull-right panel with-nav-tabs panel-default">
             <div class="panel-heading">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab1default" data-toggle="tab">News</a></li>
@@ -46,7 +40,27 @@
                 </div>
             </div>
         </div>
+        </div>
 </div>
+
+<script type="text/javascript">
+    function initMap() {
+      // The location of Uluru
+      var uluru = {lat: -25.344, lng: 131.036};
+      // The map, centered at Uluru
+      var map = new google.maps.Map(
+          document.getElementById('map'), {zoom: 4, center: uluru});
+      // The marker, positioned at Uluru
+      var marker = new google.maps.Marker({position: uluru, map: map});
+    }
+</script>
+<!--Load the API from the specified URL
+* The async attribute allows the browser to render the page while the API loads
+* The key parameter will contain your own API key (which is not needed for this tutorial)
+* The callback parameter executes the initMap() function
+-->
+<!-- Google Maps API Key: AIzaSyBP8biNI7FrjpuX4ylmO2i2n6LEqR-h6Io -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBP8biNI7FrjpuX4ylmO2i2n6LEqR-h6Io&callback=initMap"></script>
 
 </body>
 
