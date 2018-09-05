@@ -24,3 +24,16 @@ html, body {
 {
 	height: 100%;
 }
+
+#tab2default div:nth-child(even){
+	border-bottom: 1px solid black;
+}
+
+.panel-heading {
+	position: fixed;
+	width: 100%;
+}
+
+.panel-body {
+	padding-top: 20%;
+}
