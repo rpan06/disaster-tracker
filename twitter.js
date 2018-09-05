@@ -9,7 +9,6 @@ function searchTwitter(keyWord = "world disaster"){
         },
         success: function (dataReceived) {
             renderTweets(dataReceived);
-            console.log(dataReceived.tweets.statuses);
         }
     };
     $.ajax(ajaxConfig);
@@ -26,7 +25,5 @@ function renderTweets(dataReceived) {
         let tweetNameDiv = $('<div>').text(twitterName);
         let tweetTextDiv = $('<div>').text(tweetText);
         $('#tab2default').append(tweetNameDiv, tweetTextDiv);
-        console.log(twitterName);
-        console.log(tweetText);
     }
 }
