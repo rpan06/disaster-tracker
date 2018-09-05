@@ -14,7 +14,7 @@ function requestNewsData( keyWord = "world disaster"  ) {
     data_object.apiKey = '5f9b798c24b344edb04feb52d0e31d4f';
     data_object.q = keyWord;
     data_object.from = "2018-07-01";
-    data_object.to = "2018-09-04";
+    // data_object.to = "2018-09-04";
     data_object.sortBy = "relevancy";
     data_object.pageSize = '15';
     ajaxParams.url = "https://newsapi.org/v2/everything";
@@ -25,10 +25,13 @@ function requestNewsData( keyWord = "world disaster"  ) {
 
 
 function renderNewsData(responseData){
+    $('#tab1default').empty();
     let newsData = new Object();
 
     if(responseData.status === 'ok'){
-
+        if(!responseData.articles.length){
+            $('<div>').text("No News Found On This Topic").appendTo("#tab1default")
+        }
         for( let i  in  responseData.articles) {
             newsData.source =  responseData.articles[i].source;
             newsData.author =  responseData.articles[i].author;
@@ -52,4 +55,3 @@ function renderNewsData(responseData){
         // console.log('msg fail', responseData);
     }
 }
-

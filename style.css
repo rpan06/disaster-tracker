@@ -29,11 +29,23 @@ html, body {
 	border-bottom: 1px solid black;
 }
 
+#tab1default div {
+	border-bottom:1px solid black;
+}
+
+.tab-content {
+	padding-top: 30%;
+}
+
 .panel-heading {
 	position: fixed;
 	width: 100%;
 }
 
-.panel-body {
-	padding-top: 20%;
+.tweetName {
+	color: rgb(84, 175, 66);
+}
+
+.tweets {
+	color: rgb(206, 127, 37);
 }
