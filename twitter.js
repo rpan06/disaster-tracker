@@ -33,8 +33,8 @@ function renderTweets(dataReceived) {
         }
 
         let twitterName = dataReceived.tweets.statuses[i].user.screen_name;
-        let tweetNameDiv = $('<div>').text(twitterName);
-        let tweetTextDiv = $('<div>').html(tweetText);
+        let tweetNameDiv = $('<div>').text(twitterName).addClass('tweetName');
+        let tweetTextDiv = $('<div>').html(tweetText).addClass('tweets');
         $('#tab2default').append(tweetNameDiv, tweetTextDiv);
     }
 }
