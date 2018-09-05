@@ -35,6 +35,8 @@ function placeMarkers(array) {
     });
     marker.addListener('click', function() {
       infowindow.open(map, marker);
+      //news search render function
+      searchTwitter(item.keywords);
     });
   }
 }

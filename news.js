@@ -4,7 +4,6 @@
  */
  $(document).ready(sendAjax);
 
-news_array = [];
 const NEWS_URL = 'https://newsapi.org/v2/everything';
 const API_KEY  =  '5f9b798c24b344edb04feb52d0e31d4f';
 
@@ -22,21 +21,20 @@ var ajaxParams = {
 }
 
 function getResult(response){
-    var    newsData = new Object();
+    let newsData = new Object();
     if(response.status === 'ok'){
         renderNews(response);
-        console.log ('news_array', news_array);
         console.log('msg success', response);
     }else{
         console.log('msg fail', response);
     }
 }
 
-function requsetData(  ) {
+function requestData( keywords = "world disaster" ) {
 
-    data_object.q = 'earthquake AND indonesia';
+    data_object.q = keywords;
     data_object.from = "2018-07-01";
-    data_object.to = "2018-09-04";
+    // data_object.to = "2018-09-04";
     data_object.sortBy = "relevancy";
     data_object.pageSize = '15';
     ajaxParams.url = NEWS_URL;
@@ -44,13 +42,13 @@ function requsetData(  ) {
 }
 
 function sendAjax(){
-    requsetData();
+    requestData();
     $.ajax(ajaxParams);
 }
 
 
 function renderNews(responseData) {
-
+    $('#tab1default').empty();
     let newsData = new Object();
 
     for( let i  in  responseData.articles) {
@@ -70,7 +68,6 @@ function renderNews(responseData) {
         let newsDiv = $('<div>');
         newsDiv.append(newsTitle);
         $('#tab1default').append(newsDiv);
-        console.log(newsDiv);
     }
 
 
