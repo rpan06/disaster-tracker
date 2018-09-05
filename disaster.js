@@ -30,6 +30,7 @@ function getDataFromReliefWebSuccess(responseData){
     }
     deleteDuplicateData(listOfDisasters)
     console.log(listOfDisasters);
+    placeMarkers(listOfDisasters)
 }
 
 
