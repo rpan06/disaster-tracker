@@ -10,10 +10,16 @@ function requestNewsData( keyWord = "world disaster"  ) {
         method: 'get',
         success: renderNewsData,
     }
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth();
+    let yyyy = today.getFullYear();
+    
     data_object.apiKey = '5f9b798c24b344edb04feb52d0e31d4f';
     data_object.q = keyWord;
-    data_object.from = "2018-07-01";
-    data_object.to = date.yyyy-mm-dd; //"2018-09-04";
+//    data_object.from = yyyy + '-' + mm +'-' + dd;
+    console.log('data_object.from', yyyy,mm,dd);
+//    data_object.to = yyyy + '-' + mm +'-' + dd; //"2018-09-04";
     data_object.sortBy = "relevancy";
     data_object.pageSize = '15';
     ajaxParams.url = "https://newsapi.org/v2/everything";
@@ -39,7 +45,7 @@ function renderNewsData(responseData){
             newsData.url =  responseData.articles[i].url;
             newsData.urlToImage =  responseData.articles[i].urlToImage;
             newsData.publishedAt =  responseData.articles[i].publishedAt;
-            newsTitle = $('<a>',{
+            newsTitle = $('<li><a>',{
                 text:  newsData.title,
                 title: newsData.title,
                 href:   newsData.url,
