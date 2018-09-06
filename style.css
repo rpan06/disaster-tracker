@@ -116,6 +116,14 @@ ul.nav.nav-tabs li {
 	z-index: 1;
 }
 
+#tabTitle {
+	font-family: 'Quicksand', sans-serif !important;
+}
+
+.nav .glyphicon, .nav .fa {
+	font-size: 15px;
+}
+
 div.row {
 	height: 100vh;
 }
@@ -125,3 +133,4 @@ div.row {
 	bottom: 10px;
 	right: 20%;
 }
+
