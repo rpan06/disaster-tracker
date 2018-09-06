@@ -1,5 +1,3 @@
-$(document).ready(requestNewsData());
-
 function requestNewsData( keyWord = "world disaster"  ) {
     // console.log('keyWord', keyWord);
     let data_object = { apiKey: "" ,q: "", from: "", to: "", sortBy: "" , pageSize: ""};
@@ -66,8 +64,8 @@ function renderNewsData(responseData){
 //    let today = new Date();
 //    let dd = today.getDate();
 //    let mm = today.getMonth();
-//    let yyyy = today.getFullYear();  
-   
+//    let yyyy = today.getFullYear();
+
 //    data_object.from = yyyy + '-' + mm +'-' + dd;
 //    console.log('data_object.from', yyyy,mm,dd);
 //    data_object.to = yyyy + '-' + mm +'-' + dd; //"2018-09-04";

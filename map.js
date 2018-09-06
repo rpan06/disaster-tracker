@@ -1,10 +1,4 @@
-$(document).ready(initialize);
-
 let map;
-
-function initialize() {
-  initMap();
-}
 
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -38,6 +32,7 @@ function placeMarkers(array) {
 		Volcano: { color: ' #ff0000' },
 		WildFire: { color: '#ff6600' },
 	};
+
 	for (let i = 0; i < array.length; i++) {
 		const item = array[i];
 		let latLng = new google.maps.LatLng(item.location.lat,item.location.lon);
