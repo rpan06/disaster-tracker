@@ -4,6 +4,17 @@ html, body {
 	padding: 0;
 }
 
+@media only screen and (min-width : 992px) {
+	.tab-content {
+		padding-top: 30%;
+	}
+	
+	.panel-heading {
+		position: fixed;
+		width: 100%;
+	}
+}
+
 #map_outer
 {
 	height: 100vh;
@@ -31,15 +42,6 @@ html, body {
 
 #tab1default div {
 	border-bottom:1px solid black;
-}
-
-.tab-content {
-	padding-top: 30%;
-}
-
-.panel-heading {
-	position: fixed;
-	width: 100%;
 }
 
 .tweetName {

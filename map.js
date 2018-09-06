@@ -15,7 +15,6 @@ function initMap() {
 }
 
 function placeMarkers(array) {
-<<<<<<< HEAD
 	var circles = {
 		ColdWave: { color: '#99ccff' },
 		Drought: { color: '#996633' },
