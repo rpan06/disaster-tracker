@@ -39,14 +39,14 @@ body {
 }
 
 #map-outer {
-	height: 100vh;
+	height: 100%;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
 }
 
-.panel-default {
-	height: 100vh;
+div.panel-default {
+	height: 100%;
 	margin: 0;
 	padding: 0;
 	overflow: scroll;
@@ -115,3 +115,8 @@ ul.nav.nav-tabs li {
 	left: 5px;
 	z-index: 1;
 }
+
+div.row {
+	height: 100vh;
+}
+
