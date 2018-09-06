@@ -14,8 +14,6 @@ function searchTwitter(keyWord = "world disaster"){
 }
 
 function renderTweets(dataReceived) {
-    console.log(dataReceived);
-
     $('#twitter-tab').empty();
     let tweetData = dataReceived.tweets.statuses;
 

@@ -134,3 +134,11 @@ div.row {
 	right: 20%;
 }
 
+#markerContent {
+	font-family: 'Quicksand', sans-serif !important;
+}
+
+#markerContentInfo {
+	line-height: 20px;
+}
+

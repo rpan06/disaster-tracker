@@ -63,13 +63,14 @@ function placeMarkers(array) {
 		const item = array[i];
 		let latLng = new google.maps.LatLng(item.location.lat,item.location.lon);
 		let infowindow = new google.maps.InfoWindow({
-		  content: '<div id="content">'+
-		  '<div id="siteNotice">'+
-		  '</div>'+
-		  `<h2 id="firstHeading" class="firstHeading">${item.title}</h2>`+
-		  '<div id="bodyContent">'+
-		  `<p>${item.body} <a href=${item.url}>read more</a></p>`+
-		  '</div>'+
+		  content: 
+		  '<div id="markerContent">'+
+			  `<h2 id="firstHeading">${item.title}</h2>`+
+			  `<h4 id="secondHeading">Disaster Type: ${item.disasterType}</h4>`+
+			  '<div id="bodyContent">'+
+			  	`<p id="markerContentInfo">${item.body}</p>`+
+			  	`<p><a href="${item.url}" class="btn btn-primary" role="button">Read More</a></p>`+
+			  '</div>'+
 		  '</div>'
 		});
 		let circle = new google.maps.Circle({
