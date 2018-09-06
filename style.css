@@ -27,7 +27,7 @@ html, body {
 	overflow: hidden;
 }
 
-#panel-outer
+.panel-default
 {
 	height: 100vh;
 	margin: 0;
@@ -35,7 +35,7 @@ html, body {
 	overflow: scroll;
 }
 
-#map, #main_panel_body
+#map, .panel-body-main
 {
 	height: 100%;
 }

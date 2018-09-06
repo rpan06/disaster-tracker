@@ -2,6 +2,10 @@ $(document).ready(start)
 
 function start(){
     clickHandlers();
+    initMap();
+    getDataFromReliefWeb();
+    searchTwitter();
+    requestNewsData()
 }
 
 function clickHandlers(){

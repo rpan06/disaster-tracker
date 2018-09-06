@@ -1,5 +1,3 @@
-$(document).ready(requestNewsData());
-
 function requestNewsData( keyWord = "world disaster"  ) {
     // console.log('keyWord', keyWord);
     let data_object = { apiKey: "" ,q: "", from: "", to: "", sortBy: "" , pageSize: ""};
@@ -21,7 +19,7 @@ function requestNewsData( keyWord = "world disaster"  ) {
 }
 
 function renderNewsData(responseData){
-    $('#tab1default').empty();
+    $('#news-tab').empty();
     let newsData = new Object();
 
     if(responseData.status === 'ok'){
@@ -31,7 +29,7 @@ function renderNewsData(responseData){
             let newsBody = $('<div>', { class: 'panel-body', text: ' ' });
 
             newsDiv.append(newsHeading, newsBody);
-            $('#tab1default').append(newsDiv);
+            $('#news-tab').append(newsDiv);
         }
         else{
             for( let i  in  responseData.articles) {
@@ -53,7 +51,7 @@ function renderNewsData(responseData){
                 let newsBody = $('<div>', { class: 'panel-body', text: newsData.description});
 
                 newsDiv.append(newsHeading, newsBody);
-                $('#tab1default').append(newsDiv);
+                $('#news-tab').append(newsDiv);
             }
         }
     }
@@ -66,8 +64,8 @@ function renderNewsData(responseData){
 //    let today = new Date();
 //    let dd = today.getDate();
 //    let mm = today.getMonth();
-//    let yyyy = today.getFullYear();  
-   
+//    let yyyy = today.getFullYear();
+
 //    data_object.from = yyyy + '-' + mm +'-' + dd;
 //    console.log('data_object.from', yyyy,mm,dd);
 //    data_object.to = yyyy + '-' + mm +'-' + dd; //"2018-09-04";
