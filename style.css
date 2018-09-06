@@ -3,6 +3,7 @@ body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	font-family: 'Quicksand', sans-serif !important;
 }
 
 .panel-body-main {
@@ -95,4 +96,13 @@ ul.nav.nav-tabs li {
 	width: 100%;
 	font-size: 0.9rem;
 	padding-left: 2%;
+}
+
+#thumbnailSource {
+	color: '#660000' !important;
+}
+
+.thumbnail {
+    border: 0 none;
+    box-shadow: none;
 }

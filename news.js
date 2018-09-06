@@ -46,12 +46,22 @@ function renderNewsData(responseData){
                   href:   newsData.url,
                   target: "_blank"
                 });
-                let newsDiv = $('<div>', { class: 'panel panel-success' });
-                let newsHeading = $('<div>', { class: 'panel-heading'}).append(newsTitle);
-                let newsBody = $('<div>', { class: 'panel-body', text: newsData.description});
 
-                newsDiv.append(newsHeading, newsBody);
-                $('#news-tab').append(newsDiv);
+                // Adding news api data into thumbnails (bootstrap 3)
+                let imgLink = $('<a>', { href: newsData.url });
+                let newsImg = $('<img>', { id: 'thumbnailImg', src: newsData.urlToImage });
+                imgLink.append(newsImg);
+
+                let newsInfo = $('<div>', { class: 'caption' });
+                let title = $('<h3>', { id: 'thumbnailTitle', text: newsData.title });
+                let source = $('<h6>', { id: 'thumbnailSource', text: newsData.source.name });
+                let description = $('<p>', { id: 'thumbnailDescr', text: newsData.description});
+                newsInfo.append(title, source, description);
+
+                let newsThumb = $('<div>', { class: 'thumbnail' });
+                newsThumb.append(imgLink, newsInfo);
+
+                $('#news-tab').append(newsThumb);
             }
         }
     }
