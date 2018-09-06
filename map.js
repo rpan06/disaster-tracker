@@ -51,15 +51,6 @@ function placeMarkers(array) {
 		  '</div>'+
 		  '</div>'
 		});
-		// let marker = new google.maps.Marker({
-		//   position: latLng,
-		//   icon: icons[item.disasterType].icon,
-		//   map: map,
-		//   title: item.title
-		// });
-		// marker.addListener('click', function() {
-		//   infowindow.open(map, marker);
-		// });
 		let circle = new google.maps.Circle({
 	        strokeColor: circles[item.disasterType],
 	        strokeOpacity: 0.5,

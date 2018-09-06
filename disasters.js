@@ -14,7 +14,7 @@ function getDataFromReliefWeb(){
 }
 
 function getDataFromReliefWebSuccess(responseData){
-    console.log('getDataFromReliefWebSuccess: got data successfully');
+    // console.log('getDataFromReliefWebSuccess: got data successfully');
     for (let index = 0; index < responseData.data.length; index++) {
         const disasterItem = responseData.data[index].fields
         if(disasterItem.disaster){

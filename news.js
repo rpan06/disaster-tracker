@@ -1,8 +1,7 @@
 $(document).ready(requestNewsData());
 
 function requestNewsData( keyWord = "world disaster"  ) {
-    
-    console.log('keyWord', keyWord);
+    // console.log('keyWord', keyWord);
     let data_object = { apiKey: "" ,q: "", from: "", to: "", sortBy: "" , pageSize: ""};
     let ajaxParams = {
         data: data_object,
@@ -27,8 +26,14 @@ function renderNewsData(responseData){
 
     if(responseData.status === 'ok'){
         if(!responseData.articles.length){
-            $('<div>').text("No News Found On This Topic").appendTo("#tab1default")
-        }else{
+            let newsDiv = $('<div>', { class: 'panel panel-success' });
+            let newsHeading = $('<div>', { class: 'panel-heading', text: 'No News Found On This Topic' });
+            let newsBody = $('<div>', { class: 'panel-body', text: ' ' });
+
+            newsDiv.append(newsHeading, newsBody);
+            $('#tab1default').append(newsDiv);
+        }
+        else{
             for( let i  in  responseData.articles) {
                 newsData.source =  responseData.articles[i].source;
                 newsData.author =  responseData.articles[i].author;
@@ -38,25 +43,25 @@ function renderNewsData(responseData){
                 newsData.urlToImage =  responseData.articles[i].urlToImage;
                 newsData.publishedAt =  responseData.articles[i].publishedAt;
                 newsTitle = $('<a>',{
-                    class: "newslist",
-                    text:  newsData.title,
-                    title: newsData.title,
-                    href:   newsData.url,
-                    target: "_blank"
+                  text:  newsData.title,
+                  title: newsData.title,
+                  href:   newsData.url,
+                  target: "_blank"
                 });
-                let newsli = $('<li>'); 
-                newsli.append(newsTitle);
-                let newsDiv = $('<div>');
-                newsDiv.append(newsli);
-                $('#tab1default').append(newsDiv);    
+                let newsDiv = $('<div>', { class: 'panel panel-success' });
+                let newsHeading = $('<div>', { class: 'panel-heading'}).append(newsTitle);
+                let newsBody = $('<div>', { class: 'panel-body', text: newsData.description});
+
+                newsDiv.append(newsHeading, newsBody);
+                $('#tab1default').append(newsDiv);
             }
         }
-    }else{
+    }
+    else{
         // error to do
         // console.log('msg fail', responseData);
     }
 }
-
 
 //    let today = new Date();
 //    let dd = today.getDate();

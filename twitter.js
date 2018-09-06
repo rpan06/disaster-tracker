@@ -17,10 +17,19 @@ function searchTwitter(keyWord = "world disaster"){
 searchTwitter();
 
 function renderTweets(dataReceived) {
-    $('#tab2default').empty()
-    let tweetData = dataReceived.tweets.statuses
+    $('#tab2default').empty();
+    let tweetData = dataReceived.tweets.statuses;
+
+    console.log(tweetData);
+
     if(!tweetData.length){
-        $('<div>').text("No Tweets Found On This Topic").appendTo("#tab2default")
+        let tweetDiv = $('<div>', { class: 'panel panel-info' });
+        let tweetHeading = $('<div>', { class: 'panel-heading', text: 'No Tweets Found On This Topic' });
+        let tweetBody = $('<div>', { class: 'panel-body', text: ' ' });
+
+        tweetDiv.append(tweetHeading, tweetBody);
+        $('#tab2default').append(tweetDiv);
+        // $('<div>').text("No Tweets Found On This Topic").appendTo("#tab2default")
     }
 
     for (let i = 0; i < tweetData.length; i++){
@@ -37,9 +46,14 @@ function renderTweets(dataReceived) {
             tweetText = tweetText.replace(linkText, linkText.link(linkText))
         }
 
-        let twitterName = dataReceived.tweets.statuses[i].user.screen_name;
-        let tweetNameDiv = $('<div>').text(`@${twitterName}`).addClass('tweetName');
-        let tweetTextDiv = $('<div>').html(tweetText).addClass('tweets');
-        $('#tab2default').append(tweetNameDiv, tweetTextDiv);
+        let twitterName = `@${dataReceived.tweets.statuses[i].user.screen_name}`;
+        // let tweetText = dataReceived.tweets.statuses[i].text;
+
+        let tweetDiv = $('<div>', { class: 'panel panel-info' });
+        let tweetHeading = $('<div>', { class: 'panel-heading', text: twitterName });
+        let tweetBody = $('<div>', { class: 'panel-body', html: tweetText});
+
+        tweetDiv.append(tweetHeading, tweetBody);
+        $('#tab2default').append(tweetDiv);
     }
 }

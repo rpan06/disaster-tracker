@@ -4,16 +4,20 @@ html, body {
 	padding: 0;
 }
 
+
 @media only screen and (min-width : 992px) {
 	.tab-content {
-		padding-top: 30%;
+		/*padding-top: 30%;*/
+		padding: 2%;
 	}
 	
-	.panel-heading {
-		position: fixed;
+	#main_panel_heading {
+		/*position: fixed;*/
 		width: 100%;
 	}
 }
+
+
 
 #map_outer
 {
@@ -31,27 +35,7 @@ html, body {
 	overflow: scroll;
 }
 
-#map, .panel-body
+#map, #main_panel_body
 {
 	height: 100%;
 }
-
-#tab2default div:nth-child(even){
-	border-bottom: 1px solid black;
-}
-
-#tab1default div {
-	border-bottom:1px solid black;
-}
-
-.tweetName {
-	color: rgb(84, 175, 66);
-}
-
-.tweets {
-	color: rgb(206, 127, 37);
-}
-.newslist {
-    color: darkblue;
-}
-
