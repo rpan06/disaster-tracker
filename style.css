@@ -115,3 +115,9 @@ ul.nav.nav-tabs li {
 	left: 5px;
 	z-index: 1;
 }
+
+#filter-button{
+	position: absolute;
+	bottom: 10px;
+	right: 200px;
+}
