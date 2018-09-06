@@ -19,7 +19,7 @@ function requestNewsData( keyWord = "world disaster"  ) {
 }
 
 function renderNewsData(responseData){
-    $('#tab1default').empty();
+    $('#news-tab').empty();
     let newsData = new Object();
 
     if(responseData.status === 'ok'){
@@ -29,7 +29,7 @@ function renderNewsData(responseData){
             let newsBody = $('<div>', { class: 'panel-body', text: ' ' });
 
             newsDiv.append(newsHeading, newsBody);
-            $('#tab1default').append(newsDiv);
+            $('#news-tab').append(newsDiv);
         }
         else{
             for( let i  in  responseData.articles) {
@@ -51,7 +51,7 @@ function renderNewsData(responseData){
                 let newsBody = $('<div>', { class: 'panel-body', text: newsData.description});
 
                 newsDiv.append(newsHeading, newsBody);
-                $('#tab1default').append(newsDiv);
+                $('#news-tab').append(newsDiv);
             }
         }
     }

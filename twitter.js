@@ -14,7 +14,7 @@ function searchTwitter(keyWord = "world disaster"){
 }
 
 function renderTweets(dataReceived) {
-    $('#tab2default').empty();
+    $('#twitter-tab').empty();
     let tweetData = dataReceived.tweets.statuses;
 
     //if no data, show on DOM
@@ -24,7 +24,7 @@ function renderTweets(dataReceived) {
         let tweetBody = $('<div>', { class: 'panel-body', text: ' ' });
 
         tweetDiv.append(tweetHeading, tweetBody);
-        $('#tab2default').append(tweetDiv);
+        $('#twitter-tab').append(tweetDiv);
     }
 
     for (let i = 0; i < tweetData.length; i++){
@@ -46,6 +46,6 @@ function renderTweets(dataReceived) {
         let tweetHeading = $('<div>', { class: 'panel-heading', text: twitterName });
         let tweetBody = $('<div>', { class: 'panel-body', html: tweetText});
         tweetDiv.append(tweetHeading, tweetBody);
-        $('#tab2default').append(tweetDiv);
+        $('#twitter-tab').append(tweetDiv);
     }
 }
