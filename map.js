@@ -24,7 +24,7 @@ var circles = {
 	Other: { color: '#000000' },
 };
 
-function initMap() {
+function initMap(makeMapLegend = true) {
 	map = new google.maps.Map(document.getElementById('map'), {
 	zoom: 2,
 	mapTypeId: 'roadmap',
@@ -36,7 +36,9 @@ function initMap() {
 	},
 	});
 
-	initMapLegend();
+	if(makeMapLegend){
+		initMapLegend();
+	}
 }
 
 function initMapLegend() {
@@ -53,6 +55,8 @@ function initMapLegend() {
 		legend.append(elementDiv);
 	}
 }
+
+var activeInfoWindow;
 
 function placeMarkers(array) {
 	for (let i = 0; i < array.length; i++) {
@@ -80,10 +84,16 @@ function placeMarkers(array) {
 	        map: map,
 	        radius: (60 * 15000),
 	        data: { Title: item.title }
-    	});
+		});
 		google.maps.event.addListener(circle, 'click', function(ev){
 			infowindow.setPosition(circle.getCenter());
+
+			if (activeInfoWindow) {
+				activeInfoWindow.close();
+			}
 			infowindow.open(map);
+			activeInfoWindow = infowindow;
+
 			requestNewsData(item.keywords);
       		searchTwitter(item.keywords);
 		});
