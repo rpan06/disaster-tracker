@@ -15,6 +15,7 @@ function initMap() {
 }
 
 function placeMarkers(array) {
+<<<<<<< HEAD
 	var circles = {
 		ColdWave: { color: '#99ccff' },
 		Drought: { color: '#996633' },
@@ -76,6 +77,8 @@ function placeMarkers(array) {
 		google.maps.event.addListener(circle, 'click', function(ev){
 			infowindow.setPosition(circle.getCenter());
 			infowindow.open(map);
+			requestNewsData(item.keywords);
+      		searchTwitter(item.keywords);
 		});
 	}
 }
