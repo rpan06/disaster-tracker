@@ -1,7 +1,8 @@
 $(document).ready(requestNewsData());
 
 function requestNewsData( keyWord = "world disaster"  ) {
-
+    
+    console.log('keyWord', keyWord);
     let data_object = { apiKey: "" ,q: "", from: "", to: "", sortBy: "" , pageSize: ""};
     let ajaxParams = {
         data: data_object,
@@ -37,12 +38,13 @@ function renderNewsData(responseData){
                 newsData.urlToImage =  responseData.articles[i].urlToImage;
                 newsData.publishedAt =  responseData.articles[i].publishedAt;
                 newsTitle = $('<a>',{
+                    class: "newslist",
                     text:  newsData.title,
                     title: newsData.title,
                     href:   newsData.url,
                     target: "_blank"
                 });
-                let newsli = $('<li>').addClass('newslist');
+                let newsli = $('<li>'); 
                 newsli.append(newsTitle);
                 let newsDiv = $('<div>');
                 newsDiv.append(newsli);
