@@ -28,7 +28,12 @@ function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 	zoom: 2,
 	mapTypeId: 'roadmap',
-	center: {lat: 13.4443, lng: 144.7937}
+	center: {lat: 13.4443, lng: 144.7937},
+	mapTypeControl: true,
+	mapTypeControlOptions: {
+		style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+		position: google.maps.ControlPosition.TOP_RIGHT
+	},
 	});
 
 	initMapLegend();
@@ -40,7 +45,7 @@ function initMapLegend() {
 	for(var key in circles){
 		if(key==='Other')
 			break;
-		
+
 		let elementDiv = $('<div>', { id: 'elementDiv' });
 		let elementCir = $('<div>', { id: 'elementCir', class: 'circle' }).css('background-color', circles[key].color);
 		let elementName = $('<span>', { id: 'elementName', text: key, color: circles[key].color });

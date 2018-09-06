@@ -13,4 +13,5 @@ function clickHandlers(){
         event.preventDefault()
         $(this).tab('show')
     })
+    $('#types-disaster li').click(filterDisasterList)
 }
