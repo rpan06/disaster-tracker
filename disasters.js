@@ -58,14 +58,16 @@ function shortenBodyText(str = ""){
     return str
 }
 
-function filterDisasterList(type){
+function filterDisasterList(){
+    let type = $(event.currentTarget).text()
+    console.log(type)
     let filteredListOfDisasters = [];
     for (let index = 0; index < listOfDisasters.length; index++) {
         if (listOfDisasters[index].disasterType === type){
             filteredListOfDisasters.push(listOfDisasters[index])
         }
     }
-    if(type === "all"){
+    if(type === "All"){
         filteredListOfDisasters = listOfDisasters
     }
     console.log(filteredListOfDisasters)
