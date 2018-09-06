@@ -115,3 +115,11 @@ ul.nav.nav-tabs li {
 	left: 5px;
 	z-index: 1;
 }
+
+#tabTitle {
+	font-family: 'Quicksand', sans-serif !important;
+}
+
+.nav .glyphicon, .nav .fa {
+	font-size: 15px;
+}

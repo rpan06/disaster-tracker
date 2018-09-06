@@ -14,6 +14,8 @@ function searchTwitter(keyWord = "world disaster"){
 }
 
 function renderTweets(dataReceived) {
+    console.log(dataReceived);
+
     $('#twitter-tab').empty();
     let tweetData = dataReceived.tweets.statuses;
 
@@ -40,10 +42,11 @@ function renderTweets(dataReceived) {
             let linkText = tweetText.match(/https\S+/)[0]
             tweetText = tweetText.replace(linkText, linkText.link(linkText))
         }
+        tweetText += `<br><br><small><span class="glyphicon glyphicon-retweet"></span> ${dataReceived.tweets.statuses[i].retweet_count}     <span class="glyphicon glyphicon-heart"></span> ${dataReceived.tweets.statuses[i].favorite_count}</small>`;
 
-        let twitterName = `@${dataReceived.tweets.statuses[i].user.screen_name}`;
+        let twitterName = `<h4><i class="fa fa-twitter"></i>  ${dataReceived.tweets.statuses[i].user.name}  <small>@${dataReceived.tweets.statuses[i].user.screen_name}</small></h4>`;
         let tweetDiv = $('<div>', { class: 'panel panel-info' });
-        let tweetHeading = $('<div>', { class: 'panel-heading', text: twitterName });
+        let tweetHeading = $('<div>', { class: 'panel-heading', html: twitterName });
         let tweetBody = $('<div>', { class: 'panel-body', html: tweetText});
         tweetDiv.append(tweetHeading, tweetBody);
         $('#twitter-tab').append(tweetDiv);
