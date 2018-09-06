@@ -2,7 +2,7 @@ let listOfDisasters = [];
 
 function getDataFromReliefWeb(){
     let ajaxParams = {
-          url: 'https://api.reliefweb.int/v1/reports?appname=apidoc&profile=full&limit=200',
+          url: 'https://api.reliefweb.int/v1/reports?appname=apidoc&profile=full&limit=300',
           method: 'get',
           success: getDataFromReliefWebSuccess,
           dataType: 'json',
@@ -24,12 +24,13 @@ function getDataFromReliefWebSuccess(responseData){
                 body: shortenBodyText(disasterItem.body), //["body-html"]
                 location: disasterItem.primary_country.location,
                 keywords: makeKeywords(disasterItem.disaster[0].name),
-                url: disasterItem.url_alias
+                url: disasterItem.url_alias,
             }
             listOfDisasters.push(disaster)
         }
     }
     deleteDuplicateData(listOfDisasters)
+    easterEgg();
     console.log(listOfDisasters);
     placeMarkers(listOfDisasters)
 }
@@ -56,6 +57,26 @@ function shortenBodyText(str = ""){
     str = str.split(" ").splice(0,100).join(" ") //grabs 100 words
     str += "..."
     return str
+}
+
+function filterDisasterList(type){
+    let filteredListOfDisasters = [];
+    for (let index = 0; index < listOfDisasters.length; index++) {
+        if (listOfDisasters[index].disasterType === type){
+            filteredListOfDisasters.push(listOfDisasters[index])
+        }
+    }
+    if(type === "all"){
+        filteredListOfDisasters = listOfDisasters
+    }
+    console.log(filteredListOfDisasters)
+    initMap();
+    placeMarkers(filteredListOfDisasters)
+}
+
+function easterEgg(){
+    var randomIndex = Math.floor(Math.random() * listOfDisasters.length)
+    listOfDisasters[randomIndex].easterEgg = 'meerkat'
 }
 
 getDataFromReliefWeb();
