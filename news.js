@@ -67,10 +67,17 @@ function renderNews(responseData) {
           href:   newsData.url,
           target: "_blank"
         });
-        let newsDiv = $('<div>');
-        newsDiv.append(newsTitle);
+        let newsDiv = $('<div>', { class: 'panel panel-success' });
+        let newsHeading = $('<div>', { class: 'panel-heading'}).append(newsTitle);
+        let newsBody = $('<div>', { class: 'panel-body', text: newsData.description});
+
+        newsDiv.append(newsHeading, newsBody);
         $('#tab1default').append(newsDiv);
-        console.log(newsDiv);
+
+        // let newsDiv = $('<div>');
+        // newsDiv.append(newsTitle);
+        // $('#tab1default').append(newsDiv);
+        // console.log(newsDiv);
     }
 
 
