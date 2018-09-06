@@ -23,7 +23,7 @@ function getDataFromReliefWebSuccess(responseData){
                 disasterType: disasterItem.disaster_type[0].name,
                 body: shortenBodyText(disasterItem.body), //["body-html"]
                 location: disasterItem.primary_country.location,
-                keywords: makeKeywords(disasterItem.disaster[0].name),
+                keywords: makeKeywordsFromTitle(disasterItem.disaster[0].name),
                 url: disasterItem.url_alias,
             }
             listOfDisasters.push(disaster)
@@ -34,7 +34,6 @@ function getDataFromReliefWebSuccess(responseData){
     console.log(listOfDisasters);
     placeMarkers(listOfDisasters)
 }
-
 
 function deleteDuplicateData(array){
     for (let i = 0; i < array.length-1; i++) {
@@ -47,14 +46,14 @@ function deleteDuplicateData(array){
     }
 }
 
-function makeKeywords(str){
+function makeKeywordsFromTitle(str){
     return str.split(" - ")[0].toLowerCase().replace(":","")
 }
 
 function shortenBodyText(str = ""){
     //str = str.replace(/\r?\n|\r/g,' ')  //removes line breaks
-    str = str.replace(/[*]/g,'') //removes *
-    str = str.split(" ").splice(0,100).join(" ") //grabs 100 words
+    str = str.replace(/[*]/g,'') //removes * symbols
+    str = str.split(" ").splice(0,100).join(" ") //grabs 100 words of summary
     str += "..."
     return str
 }
@@ -78,5 +77,3 @@ function easterEgg(){
     var randomIndex = Math.floor(Math.random() * listOfDisasters.length)
     listOfDisasters[randomIndex].easterEgg = 'meerkat'
 }
-
-getDataFromReliefWeb();

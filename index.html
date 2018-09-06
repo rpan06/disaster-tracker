@@ -12,12 +12,11 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBP8biNI7FrjpuX4ylmO2i2n6LEqR-h6Io&libraries=places"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="main.js" defer></script>
     <script src="map.js"></script>
     <script src="disasters.js"></script>
     <script src="twitter.js"></script>
-    <script src="news.js" defer></script>
+    <script src="news.js"></script>
 </head>
 
 <body>
@@ -28,17 +27,17 @@
             <div id="map"></div>
         </div>
         <div id='panel_outer' class="col-xs-12 col-md-3 pull-right panel with-nav-tabs panel-default">
-            <div class="panel-heading" id="main_panel_heading">
+            <div class="panel-heading">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab1default" data-toggle="tab" class="glyphicon glyphicon-list-alt"></a></li>
-                    <li><a href="#tab2default" data-toggle="tab" class="fa fa-twitter"></a></li>
-                    
+                    <li class="active"><a href="#news-tab" data-toggle="tab" class="glyphicon glyphicon-list-alt"></a></li>
+                    <li><a href="#twitter-tab" data-toggle="tab" class="fa fa-twitter"></a></li>
+
                 </ul>
             </div>
-            <div class="panel-body-main" id="main_panel_body">
+            <div class="panel-body-main">
                 <div class="tab-content">
-                    <div class="tab-pane fade in active" id="tab1default"></div>
-                    <div class="tab-pane fade" id="tab2default"></div>
+                    <div class="tab-pane fade in active" id="news-tab"></div>
+                    <div class="tab-pane fade" id="twitter-tab"></div>
                 </div>
             </div>
         </div>
