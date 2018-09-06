@@ -56,6 +56,8 @@ function initMapLegend() {
 	}
 }
 
+var activeInfoWindow;
+
 function placeMarkers(array) {
 	for (let i = 0; i < array.length; i++) {
 		const item = array[i];
@@ -82,10 +84,16 @@ function placeMarkers(array) {
 	        map: map,
 	        radius: (60 * 15000),
 	        data: { Title: item.title }
-    	});
+		});
 		google.maps.event.addListener(circle, 'click', function(ev){
 			infowindow.setPosition(circle.getCenter());
+
+			if (activeInfoWindow) {
+				activeInfoWindow.close();
+			}
 			infowindow.open(map);
+			activeInfoWindow = infowindow;
+
 			requestNewsData(item.keywords);
       		searchTwitter(item.keywords);
 		});
