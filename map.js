@@ -1,6 +1,6 @@
 $(document).ready(initialize);
 
-var map;
+let map;
 
 function initialize() {
   initMap();
@@ -63,7 +63,7 @@ function placeMarkers(array) {
 		let circle = new google.maps.Circle({
 	        strokeColor: circles[item.disasterType],
 	        strokeOpacity: 0.5,
-	        strokeWeight: 0.5,
+	        strokeWeight: 0,
 	        fillColor: circles[(item.disasterType).replace(/ /g,'')].color,
 	        fillOpacity: 0.5,
 	        center: latLng,
