@@ -10,7 +10,7 @@ html, body {
 		/*padding-top: 30%;*/
 		padding: 2%;
 	}
-	
+
 	#main_panel_heading {
 		/*position: fixed;*/
 		width: 100%;
@@ -19,7 +19,7 @@ html, body {
 
 
 
-#map_outer
+#map-outer
 {
 	height: 100vh;
 	margin: 0;
@@ -27,7 +27,7 @@ html, body {
 	overflow: hidden;
 }
 
-#panel_outer
+.panel-default
 {
 	height: 100vh;
 	margin: 0;
@@ -35,7 +35,7 @@ html, body {
 	overflow: scroll;
 }
 
-#map, #main_panel_body
+#map, .panel-body-main
 {
 	height: 100%;
 }
