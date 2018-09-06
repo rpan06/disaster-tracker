@@ -69,7 +69,7 @@ ul.nav.nav-tabs li {
 	position: absolute;
 	bottom: 10px;
 	left: 10px;
-	background-color: rgba(255, 255, 255, 0.4);
+	background-color: rgba(255, 255, 255, 0.5);
 
 	display: flex;
 	flex-flow: column wrap;
