@@ -39,14 +39,14 @@ body {
 }
 
 #map-outer {
-	height: 100vh;
+	height: 100%;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
 }
 
-.panel-default {
-	height: 100vh;
+div.panel-default {
+	height: 100%;
 	margin: 0;
 	padding: 0;
 	overflow: scroll;
@@ -116,8 +116,12 @@ ul.nav.nav-tabs li {
 	z-index: 1;
 }
 
+div.row {
+	height: 100vh;
+}
+
 #filter-button{
 	position: absolute;
 	bottom: 10px;
-	right: 200px;
+	right: 20%;
 }

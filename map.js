@@ -24,7 +24,7 @@ var circles = {
 	Other: { color: '#000000' },
 };
 
-function initMap() {
+function initMap(makeMapLegend = true) {
 	map = new google.maps.Map(document.getElementById('map'), {
 	zoom: 2,
 	mapTypeId: 'roadmap',
@@ -36,7 +36,9 @@ function initMap() {
 	},
 	});
 
-	initMapLegend();
+	if(makeMapLegend){
+		initMapLegend();
+	}
 }
 
 function initMapLegend() {
