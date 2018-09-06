@@ -71,7 +71,7 @@ function filterDisasterList(){
         filteredListOfDisasters = listOfDisasters
     }
     console.log(filteredListOfDisasters)
-    initMap();
+    initMap(false);
     placeMarkers(filteredListOfDisasters)
 }
 
