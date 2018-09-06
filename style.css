@@ -4,6 +4,21 @@ html, body {
 	padding: 0;
 }
 
+
+@media only screen and (min-width : 992px) {
+	.tab-content {
+		/*padding-top: 30%;*/
+		padding: 2%;
+	}
+	
+	#main_panel_heading {
+		/*position: fixed;*/
+		width: 100%;
+	}
+}
+
+
+
 #map_outer
 {
 	height: 100vh;
@@ -20,7 +35,7 @@ html, body {
 	overflow: scroll;
 }
 
-#map, .panel-body
+#map, #main_panel_body
 {
 	height: 100%;
 }

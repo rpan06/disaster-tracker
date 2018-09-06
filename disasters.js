@@ -14,12 +14,13 @@ function getDataFromReliefWeb(){
 }
 
 function getDataFromReliefWebSuccess(responseData){
-    console.log('getDataFromReliefWebSuccess: got data successfully');
+    // console.log('getDataFromReliefWebSuccess: got data successfully');
     for (let index = 0; index < responseData.data.length; index++) {
         const disasterItem = responseData.data[index].fields
         if(disasterItem.disaster){
             let disaster = {
                 title: disasterItem.disaster[0].name,
+                disasterType: disasterItem.disaster_type[0].name,
                 body: shortenBodyText(disasterItem.body), //["body-html"]
                 location: disasterItem.primary_country.location,
                 keywords: makeKeywords(disasterItem.disaster[0].name),
@@ -29,7 +30,7 @@ function getDataFromReliefWebSuccess(responseData){
         }
     }
     deleteDuplicateData(listOfDisasters)
-    console.log(listOfDisasters);
+    // console.log(listOfDisasters);
     placeMarkers(listOfDisasters)
 }
 
