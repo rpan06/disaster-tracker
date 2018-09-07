@@ -15,6 +15,7 @@ body {
 	position: absolute;
 	width: inherit;
 	top: 0;
+	z-index: 1;
 }
 
 #panel_outer {
@@ -86,8 +87,8 @@ ul.nav.nav-tabs li {
 }
 
 #elementCir {
-  height: 20px;
-  width: 20px;
+  height: 1.5em;
+  width: 1.5em;
   border-radius: 50%;
   display: inline-block;
 }
