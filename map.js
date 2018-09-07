@@ -30,6 +30,7 @@ function initMap(makeMapLegend = true) {
 	mapTypeId: 'roadmap',
 	center: {lat: 13.4443, lng: 144.7937},
 	mapTypeControl: true,
+	// scrollwheel: false,
 	mapTypeControlOptions: {
 		style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
 		position: google.maps.ControlPosition.TOP_RIGHT
@@ -97,6 +98,12 @@ function placeMarkers(array) {
 
 			requestNewsData(item.keywords);
       		searchTwitter(item.keywords);
+		});
+		google.maps.event.addListener(circle, 'mouseover', function(ev){
+			circle.set('fillOpacity', 0.9);
+		});
+		google.maps.event.addListener(circle, 'mouseout', function(ev){
+			circle.set('fillOpacity', 0.6);
 		});
 	}
 }
