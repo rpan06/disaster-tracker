@@ -29,10 +29,10 @@ function getDataFromReliefWebSuccess(responseData){
             listOfDisasters.push(disaster)
         }
     }
-    deleteDuplicateData(listOfDisasters)
+    deleteDuplicateData(listOfDisasters);
     easterEgg();
-    console.log(listOfDisasters);
-    placeMarkers(listOfDisasters)
+    // placeMarkers(listOfDisasters);
+    // console.log(listOfDisasters);
 }
 
 function deleteDuplicateData(array){

@@ -11,7 +11,6 @@ function getDataFromEarthquakeUSGS(){
 }
 
 function getDataFromEarthquakeUSGSSuccess(responseData){
-    console.log('success!', responseData)
     for (let index = 0; index < responseData.features.length; index++) {
         const earthquakeItem = responseData.features[index];
         let earthquake = {
