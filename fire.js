@@ -1,3 +1,6 @@
+//NEED CHROME EXTENSION
+//https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en-US
+
 function getDataForFire() {
 	//feed to parse
 	var feed = "https://inciweb.nwcg.gov/feeds/rss/incidents/";
