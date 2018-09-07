@@ -69,7 +69,7 @@ function placeMarkers(array) {
 			  `<h4 id="secondHeading">Disaster Type: ${item.disasterType}</h4>`+
 			  '<div id="bodyContent">'+
 			  	`<p id="markerContentInfo">${item.body}</p>`+
-			  	`<p><a href="${item.url}" class="btn btn-primary" role="button">Read More</a></p>`+
+			  	`<p><a target="_blank" rel="noopener noreferrer" href="${item.url}" class="btn btn-primary" role="button">Read More</a></p>`+
 			  '</div>'+
 		  '</div>'
 		});
