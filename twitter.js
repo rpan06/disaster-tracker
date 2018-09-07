@@ -46,6 +46,7 @@ function renderTweets(dataReceived) {
         let tweetDiv = $('<div>', { class: 'panel panel-info' });
         let tweetHeading = $('<div>', { class: 'panel-heading', html: twitterName });
         let tweetBody = $('<div>', { class: 'panel-body', html: tweetText});
+        $('.panel-body a', { target: "_blank", rel: "noopener noreferrer" });
         tweetDiv.append(tweetHeading, tweetBody);
         $('#twitter-tab').append(tweetDiv);
     }
