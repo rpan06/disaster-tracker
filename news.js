@@ -48,7 +48,7 @@ function renderNewsData(responseData){
                 });
 
                 // Adding news api data into thumbnails (bootstrap 3)
-                let imgLink = $('<a>', { href: newsData.url });
+                let imgLink = $('<a>', { href: newsData.url, target: "_blank", rel: "noopener noreferrer" });
                 let newsImg = $('<img>', { id: 'thumbnailImg', src: newsData.urlToImage });
                 imgLink.append(newsImg);
 
