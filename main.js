@@ -3,6 +3,7 @@ $(document).ready(start)
 function start(){
     clickHandlers();
     initMap();
+    getDataFromEarthquakeUSGS();
     getDataFromReliefWeb();
     searchTwitter();
     requestNewsData()
