@@ -49,5 +49,8 @@ function renderTweets(dataReceived) {
         $('.panel-body a', { target: "_blank", rel: "noopener noreferrer" });
         tweetDiv.append(tweetHeading, tweetBody);
         $('#twitter-tab').append(tweetDiv);
+        
     }
+    $('div.panel-body a').attr('target', '_blank');
 }
+
