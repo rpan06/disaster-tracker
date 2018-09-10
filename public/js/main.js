@@ -20,10 +20,18 @@ function clickHandlers(){
         event.preventDefault()
         $(this).tab('show')
     })
-    $('#types-disaster li').click(filterDisasterList)
+    $('#types-disaster li').click(filterDisasterList);
+
+    $("#submit").click(submitData)
+    $("#test-button").click(getDataFromServer)
+    $("#title").click(toggleSearchByLocation)
 }
 
 function renderGoogleMarkers(){
     placeMarkers(listOfDisasters);
     console.log(listOfDisasters);
+}
+
+function toggleSearchByLocation(){
+    $("#pac-card div:not(#title)").toggle()
 }
