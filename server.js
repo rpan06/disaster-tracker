@@ -3,12 +3,12 @@ const nodemailer = require('nodemailer');
 const app = express();
 const bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient;
-const { USERNAME, PASSWORD } = require('./config.js');
+const { USERNAME, PASSWORD, MONGODB_URL } = require('./config.js');
 
 const PORT = 3000;
 let db;
 
-MongoClient.connect('mongodb://DisasterTracker:LearningFuze718@ds035693.mlab.com:35693/disaster-tracker', { useNewUrlParser: true }, (err, client) => {
+MongoClient.connect(MONGODB_URL, { useNewUrlParser: true }, (err, client) => {
     if (err) {
         console.log(err)
         return;

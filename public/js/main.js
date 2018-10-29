@@ -1,18 +1,20 @@
 $(document).ready(start)
 
+let apiStatus = {
+    ReliefWeb: false,
+    EarthquakeUSGS: false,
+}
+
+const intervalStart = setInterval(checkDataIsReady, 100)
+
 function start(){
     clickHandlers();
     initMap();
-    getDataForFire()
+    // getDataForFire()
     getDataFromEarthquakeUSGS();
     getDataFromReliefWeb();
     searchTwitter();
     requestNewsData()
-
-    //makes sure that all the data is ready and collected before rendering
-    setTimeout(function(){
-        renderGoogleMarkers();
-    }, 3000)
 }
 
 function clickHandlers(){
@@ -28,10 +30,20 @@ function clickHandlers(){
 }
 
 function renderGoogleMarkers(){
-    placeMarkers(listOfDisasters);
     console.log(listOfDisasters);
+    placeMarkers(listOfDisasters);
 }
 
 function toggleSearchByLocation(){
     $("#pac-card div:not(#title)").toggle()
+}
+
+function checkDataIsReady(){
+    for (let key in apiStatus){
+        if (!apiStatus[key]){
+            return
+        }
+    }
+    clearInterval(intervalStart)
+    renderGoogleMarkers();
 }

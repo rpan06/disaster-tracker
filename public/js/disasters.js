@@ -27,6 +27,7 @@ function getDataFromReliefWebSuccess(responseData){
                 url: disasterItem.url_alias,
             }
             listOfDisasters.push(disaster)
+            apiStatus.ReliefWeb = true;
         }
     }
     deleteDuplicateData(listOfDisasters);

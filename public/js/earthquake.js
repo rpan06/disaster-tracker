@@ -13,18 +13,20 @@ function getDataFromEarthquakeUSGS(){
 function getDataFromEarthquakeUSGSSuccess(responseData){
     for (let index = 0; index < responseData.features.length; index++) {
         const earthquakeItem = responseData.features[index];
+        const location = getEarthquakeLocation(earthquakeItem.properties.title);
         let earthquake = {
-            title: getEarthquakeLocation(earthquakeItem.properties.title) + ": Earthquake - " + getEarthquakeDate(earthquakeItem.properties.time),
+            title: location + ": Earthquake - " + getEarthquakeDate(earthquakeItem.properties.time),
             disasterType: 'Earthquake',
             body: earthquakeItem.properties.title,
             location: {
                 lat: earthquakeItem.geometry.coordinates[1],
                 lon: earthquakeItem.geometry.coordinates[0],
             },
-            keywords: getEarthquakeLocation(earthquakeItem.properties.title).toLowerCase() + ' earthquake',
+            keywords: location.toLowerCase() + ' earthquake',
             url: earthquakeItem.properties.url,
         }
         listOfDisasters.push(earthquake)
+        apiStatus.EarthquakeUSGS = true;
     }
 }
 
@@ -37,5 +39,8 @@ function getEarthquakeDate(time){
 
 function getEarthquakeLocation(text){
     text = text.split(', ')
+    if (typeof text[1] === 'undefined'){
+        text = text.join('').split('-')
+    }
     return text[1]
   }

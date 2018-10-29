@@ -1,25 +1,25 @@
 let map;
 
 var circles = {
-	Volcano: { color: ' #ff0000' },
-	WildFire: { color: '#ff6600' },
-	Fire: { color: ' #ff6600' },
+	Volcano: { color: ' #900A0A' },
+	WildFire: { color: '#C30000' },
+	Fire: { color: ' #ff0000' },
 	HeatWave: { color: ' #ff6600' },
-	Drought: { color: '#996633' },
-	Earthquake: { color: '#996633' },
-	LandSlide: { color: '#996633' },
-	MudSlide: { color: '#996633' },
+	Drought: { color: '#FFBA27' },
 	Epidemic: { color: '#e6e600' },
 	InsectInfestation: { color: '#5cd65c' },
-	SnowAvalanche: { color: '#afd5ff' },
+	Earthquake: { color: '#0B8E04' },
+	LandSlide: { color: '#996633' },
+	MudSlide: { color: '#75481A' },
+	SnowAvalanche: { color: '#D6FDFF' },
 	ColdWave: { color: '#99ccff' },
-	Flood: { color: '#0066cc' },
+	Flood: { color: '#027DF9' },
 	FlashFlood: { color: '#0059b3' },
-	Tsunami: { color: '#0059b3' },
-	TropicalCyclone: { color: '#737373' },
-	StormSurge: { color: '#737373' },
+	Tsunami: { color: '#000679' },
+	TropicalCyclone: { color: '#E700CE' },
+	ExtratropicalCyclone: { color: '#940084' },
+	StormSurge: { color: '#C4C4C4' },
 	SevereLocalStorm: { color: '#737373' },
-	ExtratropicalCyclone: { color: '#737373' },
 	TechnologicalDisaster: { color: ' #000000' },
 	Other: { color: '#000000' },
 };
@@ -136,10 +136,11 @@ function placeMarkers(array) {
 	        clickable: true,
 	        draggable: false,
 	        map: map,
-	        radius: (50 * 10000),
+	        radius: 50000,
 	        data: { Title: item.title }
 		});
-		google.maps.event.addListener(circle, 'click', function(ev){
+
+		circle.addListener('click', function(ev){
 			infowindow.setPosition(circle.getCenter());
 
 			if (activeInfoWindow) {
@@ -151,11 +152,15 @@ function placeMarkers(array) {
 			requestNewsData(item.keywords);
       		searchTwitter(item.keywords);
 		});
-		google.maps.event.addListener(circle, 'mouseover', function(ev){
+		circle.addListener('mouseover', function(ev){
 			circle.set('fillOpacity', 0.9);
 		});
-		google.maps.event.addListener(circle, 'mouseout', function(ev){
+		circle.addListener('mouseout', function(ev){
 			circle.set('fillOpacity', 0.6);
 		});
+		// map.addListener('zoom_changed', function(ev){
+		// 	// size / map.zoom
+		// 	circle.setRadius(50);
+		// });
 	}
 }
