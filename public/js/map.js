@@ -142,22 +142,8 @@ function placeMarkers(array) {
 			circle.set('fillOpacity', 0.6);
 		});
 		map.addListener('zoom_changed', function(ev){
-			if(map.zoom>21){
-				circle.setRadius(1);
-			} else if(map.zoom > 17){
-				circle.setRadius(10);
-			} else if(map.zoom > 14){
-				circle.setRadius(100);
-			} else if(map.zoom > 10){
-				circle.setRadius(1000);
-			} else if(map.zoom > 7){
-				circle.setRadius(10000);
-			} else if(map.zoom > 4){
-				circle.setRadius(100000);
-			} else if(map.zoom > 2){
-				circle.setRadius(400000);
-			}
-			console.log(map.zoom, circle.radius)
+			const radius = Math.exp((21-map.zoom)*Math.LN2)
+			circle.setRadius(radius)
 		});
 	}
 }

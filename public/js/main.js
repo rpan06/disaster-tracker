@@ -8,6 +8,11 @@ let apiStatus = {
 const intervalStart = setInterval(checkDataIsReady, 100)
 
 function start(){
+    $('#myModal').modal('show');
+    // $(window).on('load',function(){
+    //     $('#myModal').modal('show');
+    // });
+
     clickHandlers();
     initMap();
     // getDataForFire()
