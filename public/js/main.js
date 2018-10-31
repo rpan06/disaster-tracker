@@ -22,16 +22,9 @@ function clickHandlers(){
         event.preventDefault()
         $(this).tab('show')
     })
-    $('#types-disaster li').click(filterDisasterList);
-
-    $("#submit").click(submitData)
-    $("#test-button").click(getDataFromServer)
+    $("#submit").click(validateInfo)
+    // $("#test-button").click(getDataFromServer)
     $("#title").click(toggleSearchByLocation)
-}
-
-function renderGoogleMarkers(){
-    console.log(listOfDisasters);
-    placeMarkers(listOfDisasters);
 }
 
 function toggleSearchByLocation(){
@@ -44,6 +37,7 @@ function checkDataIsReady(){
             return
         }
     }
-    clearInterval(intervalStart)
-    renderGoogleMarkers();
+    clearInterval(intervalStart);
+    filterDisasterTypes(listOfDisasters);
+    placeMarkers(listOfDisasters);
 }

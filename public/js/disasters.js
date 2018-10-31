@@ -31,9 +31,6 @@ function getDataFromReliefWebSuccess(responseData){
         }
     }
     deleteDuplicateData(listOfDisasters);
-    easterEgg();
-    // placeMarkers(listOfDisasters);
-    // console.log(listOfDisasters);
 }
 
 function deleteDuplicateData(array){
@@ -61,7 +58,7 @@ function shortenBodyText(str = ""){
 
 function filterDisasterList(){
     let type = $(event.currentTarget).text()
-    console.log(type)
+    // console.log(type)
     let filteredListOfDisasters = [];
     for (let index = 0; index < listOfDisasters.length; index++) {
         if (listOfDisasters[index].disasterType === type){
@@ -72,11 +69,6 @@ function filterDisasterList(){
         filteredListOfDisasters = listOfDisasters
     }
     console.log(filteredListOfDisasters)
-    initMap(false);
+    initMap();
     placeMarkers(filteredListOfDisasters)
-}
-
-function easterEgg(){
-    var randomIndex = Math.floor(Math.random() * listOfDisasters.length)
-    listOfDisasters[randomIndex].easterEgg = 'meerkat'
 }

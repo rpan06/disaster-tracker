@@ -1,30 +1,30 @@
 let map;
 
-var circles = {
+const disasterTypes = {
 	Volcano: { color: ' #900A0A' },
-	WildFire: { color: '#C30000' },
+	'Wild Fire': { color: '#C30000' },
 	Fire: { color: ' #ff0000' },
-	HeatWave: { color: ' #ff6600' },
+	'Heat Wave': { color: ' #ff6600' },
 	Drought: { color: '#FFBA27' },
 	Epidemic: { color: '#e6e600' },
-	InsectInfestation: { color: '#5cd65c' },
+	'Insect Infestation': { color: '#5cd65c' },
 	Earthquake: { color: '#0B8E04' },
-	LandSlide: { color: '#996633' },
-	MudSlide: { color: '#75481A' },
-	SnowAvalanche: { color: '#D6FDFF' },
-	ColdWave: { color: '#99ccff' },
+	'Land Slide': { color: '#996633' },
+	'Mud Slide': { color: '#75481A' },
+	'Snow Avalanche': { color: '#D6FDFF' },
+	'Cold Wave': { color: '#99ccff' },
 	Flood: { color: '#027DF9' },
-	FlashFlood: { color: '#0059b3' },
+	'Flash Flood': { color: '#0059b3' },
 	Tsunami: { color: '#000679' },
-	TropicalCyclone: { color: '#E700CE' },
-	ExtratropicalCyclone: { color: '#940084' },
-	StormSurge: { color: '#C4C4C4' },
-	SevereLocalStorm: { color: '#737373' },
-	TechnologicalDisaster: { color: ' #000000' },
+	'Tropical Cyclone': { color: '#E700CE' },
+	'Extratropical Cyclone': { color: '#940084' },
+	'Storm Surge': { color: '#C4C4C4' },
+	'Severe Local Storm': { color: '#737373' },
+	'Technological Disaster': { color: ' #000000' },
 	Other: { color: '#000000' },
 };
 
-function initMap(makeMapLegend = true) {
+function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 	zoom: 2,
 	mapTypeId: 'roadmap',
@@ -36,10 +36,6 @@ function initMap(makeMapLegend = true) {
 		position: google.maps.ControlPosition.TOP_RIGHT
 	},
 	});
-
-	if(makeMapLegend){
-		initMapLegend();
-	}
 
 	var card = document.getElementById('pac-card');
   var input = document.getElementById('pac-input');
@@ -69,7 +65,6 @@ function initMap(makeMapLegend = true) {
 		  window.alert("No details available for input: '" + place.name + "'");
 		  return;
 		}
-
 		// If the place has a geometry, then present it on a map.
 		if (place.geometry.viewport) {
 		  map.fitBounds(place.geometry.viewport);
@@ -94,26 +89,14 @@ function initMap(makeMapLegend = true) {
 
 }
 
-function initMapLegend() {
-	let legend = $('#map_legend');
-
-	for(var key in circles){
-		if(key==='Other')
-			break;
-
-		let elementDiv = $('<div>', { id: 'elementDiv' });
-		let elementCir = $('<div>', { id: 'elementCir', class: 'circle' }).css('background-color', circles[key].color);
-		let elementName = $('<span>', { id: 'elementName', text: key, color: circles[key].color });
-		elementDiv.append(elementCir, elementName);
-		legend.append(elementDiv);
-	}
-}
-
-var activeInfoWindow;
+let activeInfoWindow;
 
 function placeMarkers(array) {
 	for (let i = 0; i < array.length; i++) {
 		const item = array[i];
+		if(!item.location){
+			continue;
+		}
 		let latLng = new google.maps.LatLng(item.location.lat,item.location.lon);
 		let infowindow = new google.maps.InfoWindow({
 		  content:
@@ -127,16 +110,16 @@ function placeMarkers(array) {
 		  '</div>'
 		});
 		let circle = new google.maps.Circle({
-	        strokeColor: circles[item.disasterType],
+	        strokeColor: disasterTypes[item.disasterType],
 	        strokeOpacity: 0.8,
 	        strokeWeight: 0,
-	        fillColor: circles[(item.disasterType).replace(/ /g,'')].color,
+	        fillColor: disasterTypes[item.disasterType].color,
 	        fillOpacity: 0.6,
 	        center: latLng,
 	        clickable: true,
 	        draggable: false,
 	        map: map,
-	        radius: 50000,
+	        radius: 400000,
 	        data: { Title: item.title }
 		});
 
@@ -158,9 +141,57 @@ function placeMarkers(array) {
 		circle.addListener('mouseout', function(ev){
 			circle.set('fillOpacity', 0.6);
 		});
-		// map.addListener('zoom_changed', function(ev){
-		// 	// size / map.zoom
-		// 	circle.setRadius(50);
-		// });
+		map.addListener('zoom_changed', function(ev){
+			if(map.zoom>21){
+				circle.setRadius(1);
+			} else if(map.zoom > 17){
+				circle.setRadius(10);
+			} else if(map.zoom > 14){
+				circle.setRadius(100);
+			} else if(map.zoom > 10){
+				circle.setRadius(1000);
+			} else if(map.zoom > 7){
+				circle.setRadius(10000);
+			} else if(map.zoom > 4){
+				circle.setRadius(100000);
+			} else if(map.zoom > 2){
+				circle.setRadius(400000);
+			}
+			console.log(map.zoom, circle.radius)
+		});
+	}
+}
+
+
+function filterDisasterTypes(arr){
+	let currentDisasterTypes = [];
+	for(let i = 0; i<arr.length; i++){
+		if(currentDisasterTypes.indexOf(arr[i].disasterType) === -1){
+			currentDisasterTypes.push(arr[i].disasterType)
+		}
+	}
+	addFilterMenu(currentDisasterTypes)
+	initMapLegend(currentDisasterTypes);
+}
+function addFilterMenu(arr){
+	arr.map(item=>{
+		let listLink = $("<a>", {
+			href: "#",
+			text: item
+		});
+		let listItem = $("<li>").append(listLink);
+		$("#types-disaster").append(listItem)
+	})
+	$('#types-disaster li').click(filterDisasterList);
+}
+
+function initMapLegend(arr) {
+	let legend = $('#map_legend');
+	for (let i = 0; i<arr.length; i++){
+			let elementDiv = $('<div>', { id: 'elementDiv' });
+			let elementCir = $('<div>', { id: 'elementCir', class: 'circle' }).css('background-color', disasterTypes[arr[i]].color);
+			let elementName = $('<span>', { id: 'elementName', text: arr[i], color: disasterTypes[arr[i]].color });
+			elementDiv.append(elementCir, elementName);
+			legend.append(elementDiv);
 	}
 }
