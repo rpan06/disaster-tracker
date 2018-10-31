@@ -6,20 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Disaster Tracker</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBP8biNI7FrjpuX4ylmO2i2n6LEqR-h6Io&libraries=places"></script>
-    <script src="main.js" defer></script>
-    <script src="map.js"></script>
-    <script src="disasters.js"></script>
-    <script src="twitter.js"></script>
-    <script src="news.js"></script>
-    <script src="earthquake.js"></script>
-    <script src="fire.js"></script>
+    <script src="./js/main.js" defer></script>
+    <script src="./js/map.js"></script>
+    <script src="./js/disasters.js"></script>
+    <script src="./js/twitter.js"></script>
+    <script src="./js/news.js"></script>
+    <script src="./js/earthquake.js"></script>
+    <!-- <script src="./js/fire.js"></script> -->
+    <script src="./js/email.js"></script>
 </head>
 
 <body>
@@ -28,6 +29,21 @@
     <div class="row">
         <div id='map-outer' class="col-xs-12 col-md-9 pull-left">
             <img class="logo" src="images/DisasterTrackerLogo.png">
+            <form  class="pac-card" id="pac-card">
+                <div id="title">
+                Search by Location
+                </div>
+                <div id="pac-container">
+                  <input id="pac-input" type="text" name="location" placeholder="Enter a location">
+                </div>
+                <div id="email-container">
+                  <input id="email-input" type="text" name="email" placeholder="Enter your email to get info on nearby disasters">
+                </div>
+                <div id="submit-container">
+                  <button type="button" id="submit">Email Me Information</button> <p id="text-alert"></p>
+                  <!-- <button type="button" id="test-button">TESTING BUTTON ONLY: Send Emails</button> -->
+                </div>
+            </form>
             <div id="map"></div>
             <div id="map_legend" class="hidden-xs"></div>
             <div id="filter-button" class="btn-group dropup btn-container">
@@ -35,7 +51,7 @@
                     Filter <span class="caret"></span>
                 </button>
                     <ul class="dropdown-menu" id="types-disaster">
-                        <li><a href="#">All</a></li>
+                        <!-- <li><a href="#">All</a></li>
                         <li><a href="#">Cold Wave</a></li>
                         <li><a href="#">Drought</a></li>
                         <li><a href="#">Earthquake</a></li>
@@ -56,7 +72,7 @@
                         <li><a href="#">Tropical Cyclone</a></li>
                         <li><a href="#">Tsunami</a></li>
                         <li><a href="#">Volcano</a></li>
-                        <li><a href="#">Wild Fire</a></li>
+                        <li><a href="#">Wild Fire</a></li> -->
                     </ul>
             </div>
         </div>
