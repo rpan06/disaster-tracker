@@ -1,7 +1,3 @@
-//TODO: unsubscribe option
-//TODO: fix fire stuff
-//TODO: CURRENTLOCATION NOT GETTING DATA
-
 //http://bassistance.de/2009/03/03/jquery-snippet-autocomplete-city-based-on-zip-code/
 //https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete
 //https://mlab.com/databases/disaster-tracker/collections/data?q=&f=&s=&pageNum=0&pageSize=10
