@@ -8,9 +8,10 @@ Under the "Search By Location" toggle, the user is able to enter in a location a
 ![](demo2.gif)
 
 This project was originally created in a 48 hour coding hackathon with 3 other team members:
-David Ahn [https://github.com/d-ahn10](https://github.com/d-ahn10)
-Hank Kim [https://github.com/citation0097](https://github.com/citation0097)
-Kyle Pamintan [https://github.com/kylepamintuan](https://github.com/kylepamintuan)
+
+  - David Ahn [https://github.com/d-ahn10](https://github.com/d-ahn10)
+  - Hank Kim [https://github.com/citation0097](https://github.com/citation0097)
+  - Kyle Pamintan [https://github.com/kylepamintuan](https://github.com/kylepamintuan)
 
 
 ## Installation
