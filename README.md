@@ -28,7 +28,7 @@ This project was originally created in a 48 hour coding hackathon with 3 other t
 >    - `npm start`
 > 1. Open a browser and navigate to `localhost:3000`
 
-## Meta
+## Author
 
 Rachel Pan - rpan06@gmail.com
 
